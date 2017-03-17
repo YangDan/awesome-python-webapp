@@ -11,7 +11,9 @@ class MysqlClient():
     def connect(self,param):
         if param.has_key('port') == False:
             param['port'] = 3306
-        self.conn = MySQLdb.connect()
+        self.conn = MySQLdb.connect(host=param['host'], user=param['user'], passwd=param['passwd'], db=param['db'],
+                                    port=param['port'], cursorclass=MySQLdb.cursors.DictCursor)
+
 
 
     def close(self):
